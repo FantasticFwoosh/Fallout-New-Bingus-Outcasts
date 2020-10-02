@@ -49,7 +49,7 @@ var/DYN_EX_SCALE = 0.5
     var/move_time = 0    // the earliest time the mob may move
 
 /mob/Move()
-    if(world.time & move_time) // not enough time passed
+    if(world.time < move_time) // not enough time passed
         return
 
     // set the move_time for move_delay ticks from now
