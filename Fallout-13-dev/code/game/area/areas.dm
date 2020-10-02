@@ -196,7 +196,7 @@ var/list/teleportlocs = list()
 			for(var/obj/machinery/door/firedoor/D in RA)
 				if(!D.welded)
 					if(D.operating)
-						D.nextstate = CLOSED
+						D.nextstate = FIRELOCK_CLOSED
 					else if(!D.density)
 						addtimer(CALLBACK(D, /obj/machinery/door/firedoor.proc/close), 0)
 			for(var/obj/machinery/firealarm/F in RA)

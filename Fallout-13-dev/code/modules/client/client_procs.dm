@@ -203,7 +203,7 @@ var/next_external_rsc = 0
 			qdel(src)
 			return 0
 
-	if( (world.address == address || !address) && !host )
+	if((world.address == address || !address) && !host )
 		host = key
 		world.update_status()
 
@@ -297,7 +297,7 @@ var/next_external_rsc = 0
 	return QDEL_HINT_HARDDEL_NOW
 
 /client/proc/set_client_age_from_db()
-	if (IsGuestKey(src.key))
+	if(IsGuestKey(src.key))
 		return
 
 	establish_db_connection()
@@ -307,10 +307,10 @@ var/next_external_rsc = 0
 	var/sql_ckey = sanitizeSQL(src.ckey)
 
 	var/DBQuery/query = dbcon.NewQuery("SELECT id, datediff(Now(),firstseen) as age FROM [format_table_name("player")] WHERE ckey = '[sql_ckey]'")
-	if (!query.Execute())
+	if(!query.Execute())
 		return
 
-	while (query.NextRow())
+	while(query.NextRow())
 		player_age = text2num(query.item[2])
 		return
 
@@ -387,9 +387,9 @@ var/next_external_rsc = 0
 	qdel(query_cidcheck)
 	var/oldcid = cidcheck[ckey]
 
-	if (oldcid)
-		if (!topic || !topic["token"] || !tokens[ckey] || topic["token"] != tokens[ckey])
-			if (!cidcheck_spoofckeys[ckey])
+	if(oldcid)
+		if(!topic || !topic["token"] || !tokens[ckey] || topic["token"] != tokens[ckey])
+			if(!cidcheck_spoofckeys[ckey])
 				message_admins("<span class='adminnotice'>[key_name(src)] appears to have attempted to spoof a cid randomizer check.</span>")
 				cidcheck_spoofckeys[ckey] = TRUE
 			cidcheck[ckey] = computer_id
@@ -399,13 +399,13 @@ var/next_external_rsc = 0
 			qdel(src)
 			return TRUE
 
-		if (oldcid != computer_id) //IT CHANGED!!!
+		if(oldcid != computer_id) //IT CHANGED!!!
 			cidcheck -= ckey //so they can try again after removing the cid randomizer.
 
 			to_chat(src, "<span class='userdanger'>Connection Error:</span>")
 			to_chat(src, "<span class='danger'>Invalid ComputerID(spoofed). Please remove the ComputerID spoofer from your byond installation and try again.</span>")
 
-			if (!cidcheck_failedckeys[ckey])
+			if(!cidcheck_failedckeys[ckey])
 				message_admins("<span class='adminnotice'>[key_name(src)] has been detected as using a cid randomizer. Connection rejected.</span>")
 				send2irc_adminless_only("CidRandomizer", "[key_name(src)] has been detected as using a cid randomizer. Connection rejected.")
 				cidcheck_failedckeys[ckey] = TRUE
@@ -416,15 +416,15 @@ var/next_external_rsc = 0
 			qdel(src)
 			return TRUE
 		else
-			if (cidcheck_failedckeys[ckey])
+			if(cidcheck_failedckeys[ckey])
 				message_admins("<span class='adminnotice'>[key_name_admin(src)] has been allowed to connect after showing they removed their cid randomizer</span>")
 				send2irc_adminless_only("CidRandomizer", "[key_name(src)] has been allowed to connect after showing they removed their cid randomizer.")
 				cidcheck_failedckeys -= ckey
-			if (cidcheck_spoofckeys[ckey])
+			if(cidcheck_spoofckeys[ckey])
 				message_admins("<span class='adminnotice'>[key_name_admin(src)] has been allowed to connect after appearing to have attempted to spoof a cid randomizer check because it <i>appears</i> they aren't spoofing one this time</span>")
 				cidcheck_spoofckeys -= ckey
 			cidcheck -= ckey
-	else if (computer_id != lastcid)
+	else if(computer_id != lastcid)
 		cidcheck[ckey] = computer_id
 		tokens[ckey] = cid_check_reconnect()
 
@@ -474,7 +474,7 @@ var/next_external_rsc = 0
 		var/err = query_get_notes.ErrorMsg()
 		log_game("SQL ERROR obtaining id from notes table. Error : \[[err]\]\n")
 		return
-	if (query_get_notes.NextRow())
+	if(query_get_notes.NextRow())
 		return
 
 	//regardless of above, make sure their last note is not from us, as no point in repeating the same note over and over.
@@ -483,7 +483,7 @@ var/next_external_rsc = 0
 		var/err = query_get_notes.ErrorMsg()
 		log_game("SQL ERROR obtaining id from notes table. Error : \[[err]\]\n")
 		return
-	if (query_get_notes.NextRow())
+	if(query_get_notes.NextRow())
 		if (query_get_notes.item[1] == adminckey)
 			return
 	add_note(ckey, "Detected as using a cid randomizer.", null, adminckey, 0, null, 0)
@@ -503,9 +503,9 @@ var/next_external_rsc = 0
 		verbs += /client/proc/self_notes
 
 
-#undef TOPIC_SPAM_DELAY
+//#undef TOPIC_SPAM_DELAY //dind't find anything related to this.
 #undef UPLOAD_LIMIT
-#undef MIN_CLIENT_VERSION
+//#undef MIN_CLIENT_VERSION //Same as above
 
 //checks if a client is afk
 //3000 frames = 5 minutes

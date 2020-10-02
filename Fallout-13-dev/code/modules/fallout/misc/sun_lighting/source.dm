@@ -203,7 +203,7 @@
 		REMOVE_CORNER(C)
 		effect_str -= C
 
-#undef effect_update
+#undef EFFECT_UPDATE
 #undef LUM_FALLOFF
 #undef REMOVE_CORNER
 #undef APPLY_CORNER

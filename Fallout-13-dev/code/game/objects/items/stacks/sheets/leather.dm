@@ -51,9 +51,9 @@ var/global/list/datum/stack_recipe/corgi_recipes = list ( \
 	singular_name = "monkey hide piece"
 	icon_state = "sheet-monkey"
 
-var/global/list/datum/stack_recipe/monkey_recipes = list ( \
-//	new/datum/stack_recipe("monkey mask", /obj/item/clothing/mask/gas/monkeymask, 1, on_floor = 1), \
-	new/datum/stack_recipe("monkey suit", /obj/item/clothing/suit/monkeysuit, 2, on_floor = 1)
+var/global/list/datum/stack_recipe/monkey_recipes = list(
+//	new/datum/stack_recipe("monkey mask", /obj/item/clothing/mask/gas/monkeymask, 1, on_floor = 1),
+//	new/datum/stack_recipe("monkey suit", /obj/item/clothing/suit/monkeysuit, 2, on_floor = 1),
 	)
 
 /obj/item/stack/sheet/animalhide/monkey/New(var/loc, var/amount=null)
@@ -72,8 +72,8 @@ var/global/list/datum/stack_recipe/monkey_recipes = list ( \
 	singular_name = "alien hide piece"
 	icon_state = "sheet-xeno"
 
-var/global/list/datum/stack_recipe/xeno_recipes = list ( \
-//	new/datum/stack_recipe("alien helmet", /obj/item/clothing/head/xenos, 1, on_floor = 1), \
+var/global/list/datum/stack_recipe/xeno_recipes = list (
+//	new/datum/stack_recipe("alien helmet", /obj/item/clothing/head/xenos, 1, on_floor = 1),
 //	new/datum/stack_recipe("alien suit", /obj/item/clothing/suit/xenos, 2, on_floor = 1),
 	)
 

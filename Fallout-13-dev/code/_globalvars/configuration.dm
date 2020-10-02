@@ -44,16 +44,14 @@ var/MAX_EX_FLAME_RANGE = 14
 var/DYN_EX_SCALE = 0.5
 
 
-mob
-    var
-        var move_delay = 5   // how many ticks the player must wait between movements
-        tmp // these vars are not saved
-            move_time = 0    // the earliest time the mob may move
+/mob
+    var/move_delay = 5
+    var/move_time = 0    // the earliest time the mob may move
 
-    Move()
-        if(world.time &lt; move_time) // not enough time passed
-            return
+/mob/Move()
+    if(world.time < move_time) // not enough time passed
+        return
 
-        // set the move_time for move_delay ticks from now
-        var move_time = world.time + move_delay
-        return ..() // do the default Move() proc and return what it returns
+    // set the move_time for move_delay ticks from now
+    move_time = world.time + move_delay
+    return ..() // do the default Move() proc and return what it returns

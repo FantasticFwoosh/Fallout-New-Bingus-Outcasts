@@ -88,5 +88,5 @@
 	if(istype(B, /obj/machinery/syndicatebomb/training))
 		return
 	var/turf/T = get_turf(B)
-	log_game("\A [B] was detonated via boom wire at [COORD(T)].")
+	log_game("\A [B] was detonated via boom wire at [ADMIN_COORD(T)].")
 	message_admins("A [B.name] was detonated via boom wire at [ADMIN_COORDJMP(T)].")

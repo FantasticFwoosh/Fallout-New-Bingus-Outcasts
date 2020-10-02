@@ -618,7 +618,7 @@ var/global/list/RPD_recipes=list(
 	playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 
 #undef PIPE_BINARY
-#undef PIPE_BENT
+#undef PIPE_BENDABLE
 #undef PIPE_TRINARY
 #undef PIPE_TRIN_M
 #undef PIPE_UNARY

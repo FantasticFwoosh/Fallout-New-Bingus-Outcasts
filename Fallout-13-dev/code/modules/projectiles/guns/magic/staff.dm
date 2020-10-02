@@ -73,7 +73,7 @@
 	armour_penetration = 75
 	block_chance = 50
 	sharpness = IS_SHARP
-	max_charges = 99999999999
+	max_charges = 100000000000
 
 /obj/item/weapon/gun/magic/staff/spellblade/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
 	if(attack_type == PROJECTILE_ATTACK)

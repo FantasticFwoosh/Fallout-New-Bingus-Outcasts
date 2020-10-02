@@ -12,9 +12,8 @@ _curl
 				data = list2params(data)
 			else
 				CRASH("Invalid parameter 'data'.")
-			var
-				options = {"--proto =http,https --output "[file]" --request [method] --data "[data]" [method == HTTP_GET ? "--get" : ""]"}
-				code 	= shell("curl [options] [url]")
+			var/options = {"--proto =http,https --output "[file]" --request [method] --data "[data]" [method == HTTP_GET ? "--get" : ""]"}
+			var/code 	= shell("curl [options] [url]")
 			// return true on success
 			world.log << options
 			return !(code || isnull(code))

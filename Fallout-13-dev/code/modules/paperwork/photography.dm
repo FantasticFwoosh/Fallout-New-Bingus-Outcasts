@@ -414,7 +414,7 @@
 	P.fields["size_px"] = size_px
 
 	aipictures += P
-		to_chat(usr, "<span class='unconscious'>Image recorded</span>")//feedback to the AI player that the picture was taken
+	to_chat(usr, "<span class='unconscious'>Image recorded</span>")//feedback to the AI player that the picture was taken
 
 
 /obj/item/device/camera/proc/injectmasteralbum(icon, img, desc, pixel_x, pixel_y, blueprintsinject, size_px) //stores image information to a list similar to that of the datacore
@@ -434,8 +434,7 @@
 		P.fields["size_px"] = size_px
 
 		C.connected_ai.aicamera.aipictures += P
-			to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>")//feedback to the Cyborg player that the picture was taken
-
+		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>")//feedback to the Cyborg player that the picture was taken
 	else
 		injectaialbum(icon, img, desc, pixel_x, pixel_y, blueprintsinject)
 

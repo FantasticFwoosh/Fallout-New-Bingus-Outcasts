@@ -87,23 +87,22 @@ This proc take soooo much perfomance.. Cause i'm using CHECK_TICK on every step,
 		if(!outfit)
 			outfit = new selected_job.outfit()
 			outfits[selected_job.type] = outfit
-	var
-		e_head
-		e_suit
-		e_uniform
-		e_shoes
-		e_gloves
-		e_l_pocket
-		e_weapon
-		e_r_pocket
-		d_head
-		d_suit
-		d_uniform
-		d_shoes
-		d_gloves
-		d_l_pocket
-		d_weapon
-		d_r_pocket
+	var/e_head
+	var/e_suit
+	var/e_uniform
+	var/e_shoes
+	var/e_gloves
+	var/e_l_pocket
+	var/e_weapon
+	var/e_r_pocket
+	var/d_head
+	var/d_suit
+	var/d_uniform
+	var/d_shoes
+	var/d_gloves
+	var/d_l_pocket
+	var/d_weapon
+	var/d_r_pocket
 	if(outfit && outfit.name != "Naked")
 		var/obj/item/temp
 		if(outfit.head)
