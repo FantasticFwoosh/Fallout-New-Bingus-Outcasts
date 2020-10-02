@@ -1,14 +1,5 @@
 // This code handles different species in the game.
 
-#define HEAT_DAMAGE_LEVEL_1 2
-#define HEAT_DAMAGE_LEVEL_2 3
-#define HEAT_DAMAGE_LEVEL_3 8
-
-#define COLD_DAMAGE_LEVEL_1 0.5
-#define COLD_DAMAGE_LEVEL_2 1.5
-#define COLD_DAMAGE_LEVEL_3 3
-
-
 /datum/species
 	var/id = null		// if the game needs to manually check your race to do something not included in a proc here, it will use this
 	var/limbs_id = null	//this is used if you want to use a different species limb sprites. Mainly used for angels as they look like humans.
@@ -64,6 +55,14 @@
 
 	//Flight and floating
 	var/override_float = 0
+
+	/*var/HEAT_DAMAGE_LEVEL_1 = 2
+	var/HEAT_DAMAGE_LEVEL_2 = 3
+	var/HEAT_DAMAGE_LEVEL_3 = 8
+
+	var/COLD_DAMAGE_LEVEL_1 = 0.5
+	var/COLD_DAMAGE_LEVEL_2 = 1.5
+	var/COLD_DAMAGE_LEVEL_3 = 3*/
 
 	///////////
 	// PROCS //
@@ -396,15 +395,15 @@
 				if("tail_lizard")
 					S = tails_list_lizard[H.dna.features["tail_lizard"]]
 				if("waggingtail_lizard")
-					S.= animated_tails_list_lizard[H.dna.features["tail_lizard"]]
+					S = animated_tails_list_lizard[H.dna.features["tail_lizard"]]
 				if("tail_human")
 					S = tails_list_human[H.dna.features["tail_human"]]
 				if("waggingtail_human")
-					S.= animated_tails_list_human[H.dna.features["tail_human"]]
+					S = animated_tails_list_human[H.dna.features["tail_human"]]
 				if("spines")
 					S = spines_list[H.dna.features["spines"]]
 				if("waggingspines")
-					S.= animated_spines_list[H.dna.features["spines"]]
+					S = animated_spines_list[H.dna.features["spines"]]
 				if("snout")
 					S = snouts_list[H.dna.features["snout"]]
 				if("frills")
@@ -1469,12 +1468,3 @@
 
 /datum/species/proc/negates_gravity(mob/living/carbon/human/H)
 	return 0
-
-
-#undef HEAT_DAMAGE_LEVEL_1
-#undef HEAT_DAMAGE_LEVEL_2
-#undef HEAT_DAMAGE_LEVEL_3
-
-#undef COLD_DAMAGE_LEVEL_1
-#undef COLD_DAMAGE_LEVEL_2
-#undef COLD_DAMAGE_LEVEL_3

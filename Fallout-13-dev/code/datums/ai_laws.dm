@@ -216,7 +216,7 @@
 		if(3)
 			pick_weighted_lawset()
 
-		else:
+		else
 			log_law("Invalid law config. Please check silicon_laws.txt")
 			add_inherent_law("You may not injure a human being or, through inaction, allow a human being to come to harm.")
 			add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")

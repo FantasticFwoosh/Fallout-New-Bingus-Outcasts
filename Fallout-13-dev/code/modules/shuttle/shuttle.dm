@@ -691,4 +691,6 @@
 		else
 			dst = destination
 		. += " towards [dst ? dst.name : "unknown location"] ([timeLeft(600)] minutes)"
+#ifdef DOCKING_PORT_HIGHLIGHT
 #undef DOCKING_PORT_HIGHLIGHT
+#endif

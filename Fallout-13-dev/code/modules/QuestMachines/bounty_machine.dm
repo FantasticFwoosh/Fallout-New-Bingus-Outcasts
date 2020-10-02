@@ -211,3 +211,6 @@
 */
 /obj/machinery/bounty_machine/attack_hand(mob/user)
 	ShowUI()
+
+#undef STATE_IDLE
+#undef STATE_VEND

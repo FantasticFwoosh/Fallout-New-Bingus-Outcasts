@@ -92,7 +92,7 @@
 	caliber = "arrow"
 
 
-	/obj/item/ammo_casing/caseless/bolt
+/obj/item/ammo_casing/caseless/bolt
 	name = "arrow"
 	desc = "It just looks like a piece of rebar..."
 	icon_state = "arrow-live"

@@ -290,7 +290,7 @@
 //		var/reflectchance = 80 - round(P.damage/3)
 //		if(prob(reflectchance))
 //			apply_damage(P.damage * 0.2, P.damage_type)
-//			visible_message("<span class='danger'>The [P.name] is reflected by [src]'s armored shell!</span>", \
+//			visible_message("<span class='danger'>The [P.name] is reflected by [src]'s armored shell!</span>",
 //							"<span class='userdanger'>The [P.name] is reflected by your armored shell!</span>")
 //
 //			// Find a turf near or on the original location to bounce to
@@ -312,7 +312,7 @@
 //		var/reflectchance2 = 40 - round(P.damage/3)
 //		if(prob(reflectchance2))
 //			apply_damage(P.damage * 0.5, P.damage_type)
-//			visible_message("<span class='danger'>The [P.name] is reflected by [src]'s armor!</span>", \
+//			visible_message("<span class='danger'>The [P.name] is reflected by [src]'s armor!</span>",
 //							"<span class='userdanger'>The [P.name] is reflected by your armor!</span>")
 //
 //			// Find a turf near or on the original location to bounce to

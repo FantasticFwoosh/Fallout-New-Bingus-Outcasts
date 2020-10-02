@@ -437,4 +437,4 @@ var/list/advance_cures = 	list(
 /datum/disease/advance/proc/totalTransmittable()
 	return properties["transmittable"]
 
-#undef RANDOM_STARTING_LEVEL
+//#undef RANDOM_STARTING_LEVEL //Not found what is related as well

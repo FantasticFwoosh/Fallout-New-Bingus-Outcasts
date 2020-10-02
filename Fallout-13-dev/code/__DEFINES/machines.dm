@@ -9,11 +9,11 @@
 
 
 //bitflags for door switches.
-#define OPEN	1
-#define IDSCAN	2
-#define BOLTS	4
-#define SHOCK	8
-#define SAFE	16
+#define OPEN	    1
+#define IDSCAN	    2
+#define DOOR_BOLTS	4
+#define SHOCK	    8
+#define SAFE	    16
 
 //used in design to specify which machine can build it
 #define	IMPRINTER	1	//For circuits. Uses glass/chemicals.
@@ -63,3 +63,7 @@
 #define PROGRAM_STATE_KILLED 0
 #define PROGRAM_STATE_BACKGROUND 1
 #define PROGRAM_STATE_ACTIVE 2
+
+//Firelocks
+#define FIRELOCK_OPEN 1
+#define FIRELOCK_CLOSED 2

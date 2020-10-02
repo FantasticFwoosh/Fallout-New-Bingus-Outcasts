@@ -40,7 +40,7 @@
 	/*
 	Bitflag, 	1= open (OPEN)
 				2= idscan (IDSCAN)
-				4= bolts (BOLTS)
+				4= bolts (DOOR_BOLTS)
 				8= shock (SHOCK)
 				16= door safties (SAFE)
 	*/
@@ -57,7 +57,7 @@
 					doors_need_closing = TRUE
 			if(specialfunctions & IDSCAN)
 				D.aiDisabledIdScanner = !D.aiDisabledIdScanner
-			if(specialfunctions & BOLTS)
+			if(specialfunctions & DOOR_BOLTS)
 				if(!D.wires.is_cut(WIRE_BOLTS) && D.hasPower())
 					D.locked = !D.locked
 					D.update_icon()

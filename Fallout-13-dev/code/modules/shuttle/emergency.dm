@@ -513,9 +513,9 @@
 	SSshuttle.backup_shuttle = src
 
 #undef UNLAUNCHED
-#undef LAUNCHED
+#undef ENDGAME_LAUNCHED
 #undef EARLY_LAUNCHED
-#undef TIMELEFT
+#undef TIME_LEFT
 #undef ENGINES_START_TIME
 #undef ENGINES_STARTED
 #undef IS_DOCKED
