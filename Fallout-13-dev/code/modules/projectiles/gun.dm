@@ -59,6 +59,10 @@
 	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
 	var/datum/action/toggle_scope_zoom/azoom
 	var/scopetype
+	var/zoom_x
+	var/zoom_y
+	var/nextscopemove = 0
+	var/scopemovespeed = 3.5 //the lesser the better
 
 	//Gun safety.
 	var/safety = 0
@@ -474,17 +478,67 @@
 	gun.zoom(L, FALSE)
 	..()
 
-/mob/living/var/obj/item/weapon/gun/zoomgun
+/mob/living
+	var/obj/item/weapon/gun/zoomgun
 
 /mob/living/Move(loc,dir)
-	..()
 	if(zoomgun)
-		zoomgun.zoom(src, FALSE)
+		zoomgun.movezoom(usr, dir)
+		return
+	..()
 
 /mob/living/setDir(newdir)
 	if(zoomgun && dir != newdir)
 		zoomgun.zoom(src, FALSE)
 	..()
+
+/obj/item/weapon/gun/proc/movezoom(mob/living/user, direction)
+	if(zoomed)
+		if(!user.is_holding(src))
+			zoom(user, FALSE)
+			return
+		if(nextscopemove < world.time)
+			nextscopemove = world.time+scopemovespeed
+			var/zoomlimit_x
+			var/zoomlimitlow_x
+			var/zoomlimit_y
+			var/zoomlimitlow_y
+			switch(user.dir)
+				if(NORTH)
+					zoomlimit_y = zoom_amt
+					zoomlimitlow_y = 0 
+					zoomlimit_x = zoom_amt/2
+					zoomlimitlow_x = -zoom_amt/2
+
+				if(EAST)
+					zoomlimit_y = zoom_amt/2
+					zoomlimitlow_y = -zoom_amt/2 
+					zoomlimit_x = zoom_amt
+					zoomlimitlow_x = 0
+				if(WEST)
+					zoomlimit_y = zoom_amt/2
+					zoomlimitlow_y = -zoom_amt/2
+					zoomlimit_x = 0
+					zoomlimitlow_x = -zoom_amt
+				if(SOUTH)
+					zoomlimit_y = 0
+					zoomlimitlow_y = -zoom_amt
+					zoomlimit_x = zoom_amt/2
+					zoomlimitlow_x = -zoom_amt/2
+			switch(direction)
+				if(NORTH)
+					zoom_y = clamp(zoom_y+1, zoomlimitlow_y, zoomlimit_y)
+				if(EAST)
+					zoom_x = clamp(zoom_x+1, zoomlimitlow_x, zoomlimit_x)
+				if(SOUTH)
+					zoom_y = clamp(zoom_y-1, zoomlimitlow_y, zoomlimit_y)
+				if(WEST)
+					zoom_x = clamp(zoom_x-1,  zoomlimitlow_x, zoomlimit_x)
+			user.client.pixel_x = world.icon_size*zoom_x
+			user.client.pixel_y = world.icon_size*zoom_y
+			if(scopetype)
+				user.overlay_fullscreen("scope", scopetype)
+	user.update_fov_position()
 
 /obj/item/weapon/gun/proc/zoom(mob/living/user, forced_zoom)
 	if(!user || !user.client)
@@ -514,20 +568,20 @@
 			zoom(user, FALSE)
 			return
 		user.zoomgun = src
-		var/_x = 0
-		var/_y = 0
+		zoom_x = 0
+		zoom_y = 0
 		switch(user.dir)
 			if(NORTH)
-				_y = zoom_amt
+				zoom_y = zoom_amt
 			if(EAST)
-				_x = zoom_amt
+				zoom_x = zoom_amt
 			if(SOUTH)
-				_y = -zoom_amt
+				zoom_y = -zoom_amt
 			if(WEST)
-				_x = -zoom_amt
+				zoom_x = -zoom_amt
 
-		user.client.pixel_x = world.icon_size*_x
-		user.client.pixel_y = world.icon_size*_y
+		user.client.pixel_x = world.icon_size*zoom_x
+		user.client.pixel_y = world.icon_size*zoom_y
 		if(scopetype)
 			user.overlay_fullscreen("scope", scopetype)
 	else
