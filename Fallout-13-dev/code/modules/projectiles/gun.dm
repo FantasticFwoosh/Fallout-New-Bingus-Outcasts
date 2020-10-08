@@ -62,7 +62,7 @@
 	var/zoom_x
 	var/zoom_y
 	var/nextscopemove = 0
-	var/scopemovespeed = 3.5 //the lesser the better
+	var/scopemovespeed = 0.45 //the lesser the faster
 
 	//Gun safety.
 	var/safety = 0
